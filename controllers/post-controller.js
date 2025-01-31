@@ -102,7 +102,7 @@ const PostController = {
       const transaction = await prisma.$transaction([
         prisma.comment.deleteMany({ where: { postId: id } }),
         prisma.like.deleteMany({ where: { postId: id } }),
-        prisma.post.deleteMany({ where: { postId: id } }),
+        prisma.post.deleteMany({ where: { id } }),
       ]);
 
       res.json(transaction);
